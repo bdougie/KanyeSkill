@@ -14,8 +14,8 @@
  *
  * Examples:
  * One-shot model:
- *  User: "Alexa, ask Space Geek for a space fact"
- *  Alexa: "Here's your space fact: ..."
+ *  User: "Alexa, ask kanye knowledge for a kanye fact"
+ *  Alexa: "Here's your kanye fact: ..."
  */
 
 /**
@@ -24,7 +24,7 @@
 var APP_ID = undefined; //replace with "amzn1.echo-sdk-ams.app.[your-unique-value-here]";
 
 /**
- * Array containing space facts.
+ * Array containing kanye facts.
  */
 var KANYE_FACTS = [
   "The name Kanye means 'the only one' in Swahilli.",
@@ -119,7 +119,7 @@ KanyeKnowledge.prototype.intentHandlers = {
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
-        response.ask("You can ask Space Geek tell me a space fact, or, you can say exit... What can I help you with?", "What can I help you with?");
+        response.ask("You can ask the Kanye Oracle tell me a kanye fact, or, you can say exit... What can I help you with?", "What can I help you with?");
     },
 
     "AMAZON.StopIntent": function (intent, session, response) {
@@ -137,12 +137,12 @@ KanyeKnowledge.prototype.intentHandlers = {
  * Gets a random new fact from the list and returns to the user.
  */
 function handleNewFactRequest(response) {
-    // Get a random space fact from the space facts list
+    // Get a random kanye fact from the kanye facts list
     var factIndex = Math.floor(Math.random() * KANYE_FACTS.length);
     var fact = KANYE_FACTS[factIndex];
 
     // Create speech output
-    var speechOutput = "Here's your space fact: " + fact;
+    var speechOutput = "Here's your kanye fact: " + fact;
 
     response.tellWithCard(speechOutput, "KanyeKnowledge", speechOutput);
 }
@@ -153,4 +153,3 @@ exports.handler = function (event, context) {
     var kanyeKnowledge = new KanyeKnowledge();
     kanyeKnowledge.execute(event, context);
 };
-
