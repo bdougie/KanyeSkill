@@ -14,8 +14,8 @@
  *
  * Examples:
  * One-shot model:
- *  User: "Alexa, ask kanye knowledge for a kanye fact"
- *  Alexa: "Here's your kanye fact: ..."
+ *  User: "Alexa, ask Kanye Knowledge for a Kanye fact"
+ *  Alexa: "Here's your Kanye fact: ..."
  */
 
 /**
@@ -24,7 +24,7 @@
 var APP_ID = undefined; //replace with "amzn1.echo-sdk-ams.app.[your-unique-value-here]";
 
 /**
- * Array containing kanye facts.
+ * Array containing Kanye facts.
  */
 var KANYE_FACTS = [
   "The name Kanye means 'the only one' in Swahilli.",
@@ -119,7 +119,7 @@ KanyeKnowledge.prototype.intentHandlers = {
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
-        response.ask("You can ask the Kanye Oracle tell me a kanye fact, or, you can say exit... What can I help you with?", "What can I help you with?");
+        response.ask("You can ask the Oracle tell me a Kanye fact, or, you can say exit... What can I help you with?", "What can I help you with?");
     },
 
     "AMAZON.StopIntent": function (intent, session, response) {
@@ -137,19 +137,22 @@ KanyeKnowledge.prototype.intentHandlers = {
  * Gets a random new fact from the list and returns to the user.
  */
 function handleNewFactRequest(response) {
-    // Get a random kanye fact from the kanye facts list
+    // Get a random Kanye fact from the Kanye facts list
     var factIndex = Math.floor(Math.random() * KANYE_FACTS.length);
     var fact = KANYE_FACTS[factIndex];
 
     // Create speech output
-    var speechOutput = "Here's your kanye fact: " + fact;
+    var speechOutput = "Here's your Kanye fact: " + fact;
 
     response.tellWithCard(speechOutput, "KanyeKnowledge", speechOutput);
 }
 
 // Create the handler that responds to the Alexa Request.
-exports.handler = function (event, context) {
+function lambdafunc1(event, context) {
     // Create an instance of the KanyeKnowledge skill.
     var kanyeKnowledge = new KanyeKnowledge();
     kanyeKnowledge.execute(event, context);
 };
+
+exports.handler = lambdafunc1
+
